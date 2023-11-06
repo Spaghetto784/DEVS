@@ -1,3 +1,140 @@
-[gd_scene format=3 uid="uid://bko5gys4h1j30"]
+[gd_scene load_steps=21 format=3 uid="uid://bko5gys4h1j30"]
+
+[ext_resource type="Script" path="res://scripts/Player.cs" id="1_g6tkn"]
+[ext_resource type="Script" path="res://scripts/PlayerInput.cs" id="1_uhfas"]
+[ext_resource type="Script" path="res://scripts/CharacterMotor.cs" id="3_hnmj3"]
+[ext_resource type="Texture2D" uid="uid://dh10fbuvonw1a" path="res://art/characters/idle/idle.png" id="4_6scme"]
+[ext_resource type="Texture2D" uid="uid://hipue2pbaq20" path="res://art/characters/run/run.png" id="5_jtaaq"]
+[ext_resource type="Script" path="res://scripts/CameraFollower.cs" id="5_v2hdt"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_whck2"]
+size = Vector2(24, 52)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7kk0l"]
+atlas = ExtResource("4_6scme")
+region = Rect2(0, 0, 71, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_lky08"]
+atlas = ExtResource("4_6scme")
+region = Rect2(71, 0, 71, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xcr5"]
+atlas = ExtResource("4_6scme")
+region = Rect2(142, 0, 71, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hkf8b"]
+atlas = ExtResource("4_6scme")
+region = Rect2(213, 0, 71, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_v6nim"]
+atlas = ExtResource("5_jtaaq")
+region = Rect2(0, 0, 71, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ojlc5"]
+atlas = ExtResource("5_jtaaq")
+region = Rect2(71, 0, 71, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j4je6"]
+atlas = ExtResource("5_jtaaq")
+region = Rect2(142, 0, 71, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_bxa42"]
+atlas = ExtResource("5_jtaaq")
+region = Rect2(213, 0, 71, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_37x8t"]
+atlas = ExtResource("5_jtaaq")
+region = Rect2(284, 0, 71, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_trrx8"]
+atlas = ExtResource("5_jtaaq")
+region = Rect2(355, 0, 71, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_hndpq"]
+atlas = ExtResource("5_jtaaq")
+region = Rect2(426, 0, 71, 67)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_o5ds8"]
+atlas = ExtResource("5_jtaaq")
+region = Rect2(497, 0, 71, 67)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_cd8ux"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7kk0l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_lky08")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xcr5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hkf8b")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_v6nim")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ojlc5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j4je6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_bxa42")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_37x8t")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_trrx8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hndpq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o5ds8")
+}],
+"loop": true,
+"name": &"run_right",
+"speed": 10.0
+}]
 
 [node name="world" type="Node2D"]
+
+[node name="Player" type="Node2D" parent="." node_paths=PackedStringArray("_input", "_motor")]
+script = ExtResource("1_g6tkn")
+_input = NodePath("Inputs")
+_motor = NodePath("PlayerBody")
+
+[node name="Inputs" type="Node" parent="Player"]
+script = ExtResource("1_uhfas")
+
+[node name="PlayerBody" type="CharacterBody2D" parent="Player"]
+script = ExtResource("3_hnmj3")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PlayerBody"]
+position = Vector2(1, 8)
+shape = SubResource("RectangleShape2D_whck2")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/PlayerBody"]
+position = Vector2(-1.25, 0)
+scale = Vector2(1.00704, 1)
+sprite_frames = SubResource("SpriteFrames_cd8ux")
+animation = &"run_right"
+autoplay = "idle"
+frame_progress = 0.85417
+
+[node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("_objectToFollow")]
+enabled = false
+position_smoothing_enabled = true
+position_smoothing_speed = 7.0
+script = ExtResource("5_v2hdt")
+_objectToFollow = NodePath("../PlayerBody")

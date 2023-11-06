@@ -1,6 +1,6 @@
 [gd_scene load_steps=25 format=3 uid="uid://c7xwastat786u"]
 
-[ext_resource type="Script" path="res://scripts/player.cs" id="1_figac"]
+[ext_resource type="Script" path="res://scripts/PlayerInput.cs" id="1_gds27"]
 [ext_resource type="Texture2D" uid="uid://dh10fbuvonw1a" path="res://art/characters/idle/idle.png" id="2_7oq15"]
 [ext_resource type="Texture2D" uid="uid://bimqm6tqwk7lj" path="res://art/characters/idle/walk.png" id="3_m3k1u"]
 
@@ -158,11 +158,11 @@ animations = [{
 }]
 
 [node name="player" type="CharacterBody2D"]
-script = ExtResource("1_figac")
+script = ExtResource("1_gds27")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="CollisionShape2D"]
 sprite_frames = SubResource("SpriteFrames_xd5mr")
-animation = &"idle"
-frame_progress = 0.927869
+animation = &"walk"
+frame_progress = 0.102416
