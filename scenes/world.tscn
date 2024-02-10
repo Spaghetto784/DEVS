@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://scripts/PlayerInput.cs" id="1_uhfas"]
 [ext_resource type="Script" path="res://scripts/CharacterMotor.cs" id="3_hnmj3"]
 [ext_resource type="Texture2D" uid="uid://dh10fbuvonw1a" path="res://art/characters/idle/idle.png" id="4_6scme"]
-[ext_resource type="Texture2D" uid="uid://hipue2pbaq20" path="res://art/characters/run/run.png" id="5_jtaaq"]
+[ext_resource type="Texture2D" uid="uid://hipue2pbaq20" path="res://art/characters/run-right/run.png" id="5_jtaaq"]
 [ext_resource type="Script" path="res://scripts/CameraFollower.cs" id="5_v2hdt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whck2"]
@@ -138,12 +138,10 @@ animations = [{
 
 [node name="world" type="Node2D"]
 
-[node name="Player" type="Node2D" parent="."]
+[node name="Player" type="Node2D" parent="." node_paths=PackedStringArray("_input", "_motor")]
 script = ExtResource("1_g6tkn")
-_input = Object(Node,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","script":ExtResource("1_uhfas"))
-
-_motor = Object(CharacterBody2D,"_import_path":NodePath(""),"unique_name_in_owner":false,"process_mode":0,"process_priority":0,"process_physics_priority":0,"process_thread_group":0,"editor_description":"","visible":true,"modulate":Color(1, 1, 1, 1),"self_modulate":Color(1, 1, 1, 1),"show_behind_parent":false,"top_level":false,"light_mask":1,"visibility_layer":1,"z_index":0,"z_as_relative":true,"y_sort_enabled":false,"texture_filter":0,"texture_repeat":0,"material":null,"use_parent_material":false,"position":Vector2(0, 0),"rotation":0.0,"scale":Vector2(1, 1),"skew":0.0,"disable_mode":0,"collision_layer":1,"collision_mask":1,"collision_priority":1.0,"input_pickable":false,"motion_mode":0,"up_direction":Vector2(0, -1),"velocity":Vector2(0, 0),"slide_on_ceiling":true,"max_slides":4,"wall_min_slide_angle":0.261799,"floor_stop_on_slope":true,"floor_constant_speed":false,"floor_block_on_wall":true,"floor_max_angle":0.785398,"floor_snap_length":1.0,"platform_on_leave":0,"platform_floor_layers":4294967295,"platform_wall_layers":0,"safe_margin":0.08,"script":ExtResource("3_hnmj3"),"_speed":300.0)
-
+_input = NodePath("Inputs")
+_motor = NodePath("PlayerBody")
 
 [node name="Inputs" type="Node" parent="Player"]
 script = ExtResource("1_uhfas")
