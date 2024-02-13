@@ -8,7 +8,7 @@
 [ext_resource type="Script" path="res://scripts/CameraFollower.cs" id="5_v2hdt"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whck2"]
-size = Vector2(24, 52)
+size = Vector2(60, 148)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7kk0l"]
 atlas = ExtResource("4_6scme")
@@ -103,36 +103,7 @@ animations = [{
 "texture": SubResource("AtlasTexture_o5ds8")
 }],
 "loop": true,
-"name": &"run_left",
-"speed": 5.0
-}, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_v6nim")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_ojlc5")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_j4je6")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_bxa42")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_37x8t")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_trrx8")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_hndpq")
-}, {
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_o5ds8")
-}],
-"loop": true,
-"name": &"run_right",
+"name": &"run",
 "speed": 10.0
 }]
 
@@ -150,14 +121,14 @@ script = ExtResource("1_uhfas")
 script = ExtResource("3_hnmj3")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Player/PlayerBody"]
-position = Vector2(1, 8)
+position = Vector2(0, 16)
 shape = SubResource("RectangleShape2D_whck2")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Player/PlayerBody"]
-position = Vector2(70, 77)
+[node name="Astra" type="AnimatedSprite2D" parent="Player/PlayerBody"]
+position = Vector2(-7, -18)
 scale = Vector2(2.94366, 3.21642)
 sprite_frames = SubResource("SpriteFrames_cd8ux")
-animation = &"run_left"
+animation = &"idle"
 autoplay = "idle"
 
 [node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("_objectToFollow")]
