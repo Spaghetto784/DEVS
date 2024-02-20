@@ -6,6 +6,6 @@ public partial class CameraFollower : Node2D
 
 	public override void _Process(double delta)
 	{
-		Position = _objectToFollow.Position;
+		//Position = _objectToFollow.Position;
 	}
 }

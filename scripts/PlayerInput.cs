@@ -11,10 +11,10 @@ public partial class PlayerInput : Node
 	public override void _Process(double delta)
 	{
 		//Bind des touches mouvements
-		_movementInput = new Vector2(
-			Input.GetAxis("Left" ,"Right"),
-			Input.GetAxis("Up", "Down")
-		);
-		
+		//_movementInput = new Vector2(
+		//	Input.GetAxis("Left" ,"Right"),
+		//	Input.GetAxis("Up", "Down")
+		//);
+		//Non-utilisé : J'ai tout fais dans CharacterMotor.cs prq erreur référence
 	}
 }
