@@ -32,18 +32,8 @@ public partial class CharacterMotor : CharacterBody2D
 	public override void _PhysicsProcess(double delta)
 	{
 		Vector2 velocity = Velocity;
-		//Add the gravity.
-		if (!IsOnFloor())
-		{
-			velocity.Y += gravity * (float)delta;
-		}
-		//Handle Jump.
-		if (Input.IsActionJustPressed("Up") && IsOnFloor())
-		{
-			velocity.Y = _jump_speed;
-		}
 		
-		//Mouvements test
+		//Mouvements fonctionnelsgit 
 		Vector2 direction = Input.GetVector("Left", "Right", "Up", "Down");
 		if (direction != Vector2.Zero)
 		{
@@ -54,10 +44,27 @@ public partial class CharacterMotor : CharacterBody2D
 			velocity.X = Mathf.MoveToward(Velocity.X, 0, _speed);
 		}
 		
+		//Add the gravity.
+		if (!IsOnFloor())
+		{
+			velocity.Y += gravity * (float)delta;
+			//Animation jump
+			_animatedSprite.Play("jump");
+		}
+		//Handle Jump.
+		else if (Input.IsActionJustPressed("Up") && IsOnFloor())
+		{
+			velocity.Y = _jump_speed;
+		}
 		//Pour jouer l'animation de run
-		if (Input.IsActionPressed("Right") || Input.IsActionPressed("Left"))
+		else if (Input.IsActionPressed("Right") || Input.IsActionPressed("Left"))
 		{
 			_animatedSprite.Play("run");
+		}
+		//Pour crouch
+		else if (Input.IsActionPressed("Down") && IsOnFloor())
+		{
+			_animatedSprite.Play("crouch");
 		}
 		//Pour lorsque le perso est immobile
 		else

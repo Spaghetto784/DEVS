@@ -1,8 +1,13 @@
-[gd_scene load_steps=18 format=3 uid="uid://olg6qwm8hdif"]
+[gd_scene load_steps=23 format=3 uid="uid://olg6qwm8hdif"]
 
 [ext_resource type="Script" path="res://scripts/CharacterMotor.cs" id="1_o8oct"]
 [ext_resource type="Texture2D" uid="uid://dh10fbuvonw1a" path="res://art/characters/idle/idle.png" id="2_fisw1"]
+[ext_resource type="Texture2D" uid="uid://d372k0kffqi82" path="res://art/characters/crouch/crouch.png" id="2_va35r"]
 [ext_resource type="Texture2D" uid="uid://hipue2pbaq20" path="res://art/characters/run-right/run.png" id="3_77gna"]
+[ext_resource type="Texture2D" uid="uid://bitf2cf81vkv0" path="res://art/characters/jump/jump-1.png" id="3_mwyp6"]
+[ext_resource type="Texture2D" uid="uid://dfu0inors20rm" path="res://art/characters/jump/jump-2.png" id="4_t0coq"]
+[ext_resource type="Texture2D" uid="uid://bdkr4il1ishwp" path="res://art/characters/jump/jump-3.png" id="5_madqr"]
+[ext_resource type="Texture2D" uid="uid://rl4cceyp6kt3" path="res://art/characters/jump/jump-4.png" id="6_ub3wu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_whck2"]
 size = Vector2(25, 73)
@@ -59,6 +64,14 @@ region = Rect2(497, 0, 71, 67)
 animations = [{
 "frames": [{
 "duration": 1.0,
+"texture": ExtResource("2_va35r")
+}],
+"loop": true,
+"name": &"crouch",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_7kk0l")
 }, {
 "duration": 1.0,
@@ -72,6 +85,23 @@ animations = [{
 }],
 "loop": true,
 "name": &"idle",
+"speed": 8.0
+}, {
+"frames": [{
+"duration": 0.8,
+"texture": ExtResource("3_mwyp6")
+}, {
+"duration": 0.8,
+"texture": ExtResource("4_t0coq")
+}, {
+"duration": 0.8,
+"texture": ExtResource("5_madqr")
+}, {
+"duration": 0.8,
+"texture": ExtResource("6_ub3wu")
+}],
+"loop": true,
+"name": &"jump",
 "speed": 8.0
 }, {
 "frames": [{
@@ -115,5 +145,5 @@ shape = SubResource("RectangleShape2D_whck2")
 position = Vector2(-3, -14)
 scale = Vector2(1.5, 1.593)
 sprite_frames = SubResource("SpriteFrames_cd8ux")
-animation = &"idle"
+animation = &"jump"
 autoplay = "idle"
