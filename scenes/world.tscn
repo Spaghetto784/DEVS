@@ -375,9 +375,9 @@ texture = ExtResource("3_w1kte")
 [node name="close-buildings" type="TextureRect" parent="background"]
 layout_mode = 0
 offset_left = 96.0
-offset_top = 243.0
+offset_top = 244.0
 offset_right = 1063.0
-offset_bottom = 647.0
+offset_bottom = 648.0
 texture = ExtResource("4_u2ckt")
 
 [node name="TileMap" type="TileMap" parent="."]
@@ -395,11 +395,14 @@ _input = NodePath("Inputs")
 script = ExtResource("1_uhfas")
 
 [node name="PlayerBody" parent="Player" instance=ExtResource("8_g0gar")]
-position = Vector2(198, 280)
+position = Vector2(198, 36)
 _jump_speed = -350.0
 
-[node name="Camera2D" type="Camera2D" parent="Player"]
-enabled = false
+[node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("_objectToFollow")]
+position = Vector2(-913, -307)
+zoom = Vector2(2, 2)
+limit_left = -5000
 position_smoothing_enabled = true
-position_smoothing_speed = 7.0
+position_smoothing_speed = 10.0
 script = ExtResource("5_v2hdt")
+_objectToFollow = NodePath("../PlayerBody")

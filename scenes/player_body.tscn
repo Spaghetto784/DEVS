@@ -145,5 +145,5 @@ shape = SubResource("RectangleShape2D_whck2")
 position = Vector2(-3, -14)
 scale = Vector2(1.5, 1.593)
 sprite_frames = SubResource("SpriteFrames_cd8ux")
-animation = &"jump"
+animation = &"run"
 autoplay = "idle"

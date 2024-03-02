@@ -1,9 +1,11 @@
+
 using System.Numerics;
+using Devs.scripts;
 using Godot;
 using Plane = Godot.Plane;
 using Vector2 = Godot.Vector2;
 
-namespace Devs.scripts;
+
 
 public partial class CharacterMotor : CharacterBody2D
 {
@@ -12,6 +14,8 @@ public partial class CharacterMotor : CharacterBody2D
 	[Export] private float _jump_speed = -400f;
 	private Vector2 _movementInput = Vector2.Zero;
 	private Vector2 _lastDirection = Vector2.Zero;
+	[Export] private int _maxJumps = 2; // Maximum number of jumps
+	private int _jumpsRemaining; // Number of jumps remaining
 	private AnimatedSprite2D _animatedSprite; //LA VARIABLE D'ASTRA
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
 	public void MovementPerformed(Vector2 input)
@@ -26,8 +30,8 @@ public partial class CharacterMotor : CharacterBody2D
 	
 	public override void _Ready()
 	{
-		//Là c'est pour lier la variable avec notre perso Astra
 		_animatedSprite = GetNode<AnimatedSprite2D>("Astra");
+		_jumpsRemaining = _maxJumps; // Initialize the jumps remaining
 	}
 	public override void _PhysicsProcess(double delta)
 	{
@@ -66,7 +70,7 @@ public partial class CharacterMotor : CharacterBody2D
 		{
 			_animatedSprite.Play("crouch");
 		}
-		//Pour lorsque le perso est immobile
+		//Animation de idle donc lobby
 		else
 		{
 			_animatedSprite.Play("idle");
@@ -101,3 +105,4 @@ public partial class CharacterMotor : CharacterBody2D
 	//	}
 	//}
 }
+
