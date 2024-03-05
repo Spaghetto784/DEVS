@@ -396,7 +396,6 @@ script = ExtResource("1_uhfas")
 
 [node name="PlayerBody" parent="Player" instance=ExtResource("8_g0gar")]
 position = Vector2(198, 36)
-_jump_speed = -350.0
 
 [node name="Camera2D" type="Camera2D" parent="Player" node_paths=PackedStringArray("_objectToFollow")]
 position = Vector2(-913, -307)
