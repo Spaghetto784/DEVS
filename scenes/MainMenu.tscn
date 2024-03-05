@@ -1,3 +1,27 @@
-[gd_scene format=3 uid="uid://2b05p6i23yh"]
+[gd_scene load_steps=2 format=3 uid="uid://2b05p6i23yh"]
+
+[ext_resource type="Script" path="res://scripts/MainMenu.cs" id="1_hktaq"]
 
 [node name="MainMenu" type="Node2D"]
+script = ExtResource("1_hktaq")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="CanvasLayer/Control"]
+layout_mode = 0
+offset_left = 210.0
+offset_top = 262.0
+offset_right = 261.0
+offset_bottom = 293.0
+text = "TUTO
+"
+
+[connection signal="button_up" from="CanvasLayer/Control/Button" to="." method="_on_tuto_button_up"]

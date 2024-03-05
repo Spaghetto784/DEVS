@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Devs"
-run/main_scene="res://scenes/world.tscn"
+run/main_scene="res://scenes/MainMenu.tscn"
 config/features=PackedStringArray("4.2", "C#", "Forward Plus")
 config/icon="res://art/icon.svg"
+
+[autoload]
+
+SceneManager="*res://scripts/SceneManager.cs"
 
 [display]
 
