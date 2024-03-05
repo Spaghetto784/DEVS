@@ -19,6 +19,7 @@ public partial class CharacterMotor : CharacterBody2D
 	private bool jumped = true;
 	private AnimatedSprite2D _animatedSprite; //LA VARIABLE D'ASTRA
 	public float gravity = ProjectSettings.GetSetting("physics/2d/default_gravity").AsSingle();
+
 	public void MovementPerformed(Vector2 input)
 	{
 		_movementInput = input.Normalized();
@@ -27,6 +28,11 @@ public partial class CharacterMotor : CharacterBody2D
 		{
 			_lastDirection = _movementInput;
 		}
+	}
+
+	public void Stop()
+	{
+		 _movementInput = Vector2.Zero;
 	}
 	
 	public override void _Ready()

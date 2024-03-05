@@ -6,6 +6,8 @@ public partial class Player : Node
 {
 	[Export] private PlayerInput _input;
 	[Export] private CharacterMotor _motor;
+	
+	public Vector2 BodyPosition => _motor.GlobalPosition;
 
 	public override void _Process(double delta)
 	{
